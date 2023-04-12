@@ -50,11 +50,6 @@
             <version>${hudi.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.hudi</groupId>
-            <artifactId>hudi-utilities_${scala.comp.version}</artifactId>
-            <version>${hudi.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>0.15</version>

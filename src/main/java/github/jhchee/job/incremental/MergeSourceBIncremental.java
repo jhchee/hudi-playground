@@ -21,7 +21,7 @@ public class MergeSourceBIncremental {
                                          .getOrCreate();
 
         Dataset<Row> streamingDataset = spark.readStream()
-                                             .format("org.apache.hudi")
+                                             .format("hudi")
                                              .option("hoodie.table.name", "source_b")
                                              .option(DataSourceReadOptions.QUERY_TYPE_OPT_KEY(), DataSourceReadOptions.QUERY_TYPE_SNAPSHOT_OPT_VAL())
                                              .load("/tmp/hudi/raw/source_b");

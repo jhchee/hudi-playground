@@ -7,23 +7,20 @@ public class CreateTableAgg {
         SparkSession spark = SparkSession.builder()
                                          .appName("Hudi create table")
                                          .master("local[1]")
-                                         .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
-                                         .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
-                                         .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
+//                                         .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+//                                         .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
                                          .getOrCreate();
 
-//        spark.sql("CREATE TABLE target_tb (\n" +
-//                "  userId STRING,\n" +
-//                "  name STRING\n" +
-//                ")\n" +
-//                "USING org.apache.hudi\n" +
-//                "OPTIONS (\n" +
-//                "  'hoodie.datasource.write.recordkey.field' 'userId',\n" +
-//                "  'hoodie.datasource.write.precombine.field' 'updatedOn'\n" +
-//                ")\n" +
-//                "LOCATION '/tmp/hudi/agg/target'");
-
-        spark.sql("create table hudi_existing_tbl using org.apache.hudi\n" +
-                "location '/tmp/hudi/hudi_existing_table';");
+        spark.sql("CREATE TABLE target (\n" +
+                "  userId STRING,\n" +
+                "  name STRING,\n" +
+                "  updatedOn TIMESTAMP\n" +
+                ")\n" +
+                "USING hudi\n" +
+                "OPTIONS (\n" +
+                "  'hoodie.datasource.write.recordkey.field' 'userId',\n" +
+                "  'hoodie.datasource.write.precombine.field' 'updatedOn'\n" +
+                ")\n" +
+                "LOCATION '/tmp/hudi/agg/target'");
     }
 }

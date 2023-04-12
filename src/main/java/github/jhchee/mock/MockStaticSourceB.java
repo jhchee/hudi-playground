@@ -21,6 +21,8 @@ public class MockStaticSourceB {
         SparkSession spark = SparkSession.builder()
                                          .appName("generate-source-b")
                                          .master("local[1]")
+                                         .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
+                                         .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                                          .getOrCreate();
 
@@ -43,7 +45,7 @@ public class MockStaticSourceB {
                                      .withColumn("updatedAt", lit(current_timestamp()));
 
         mockUser.write()
-                .format("org.apache.hudi")
+                .format("hudi")
                 .option(KeyGeneratorOptions.RECORDKEY_FIELD_NAME.key(), "userId")
                 .option(HoodieWriteConfig.PRECOMBINE_FIELD_NAME.key(), "updatedAt")
                 .option(HoodieWriteConfig.TBL_NAME.key(), TABLE_NAME)
