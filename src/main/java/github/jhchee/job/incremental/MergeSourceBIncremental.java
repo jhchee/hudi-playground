@@ -12,10 +12,10 @@ import org.apache.spark.sql.streaming.Trigger;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-public class AggDeltaStreamer {
+public class MergeSourceBIncremental {
     public static void main(String[] args) throws TimeoutException, StreamingQueryException {
         SparkSession spark = SparkSession.builder()
-                                         .appName("Hudi Streaming")
+                                         .appName("Merge Source B to Target [Streaming]")
                                          .master("local[1]")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                                          .getOrCreate();

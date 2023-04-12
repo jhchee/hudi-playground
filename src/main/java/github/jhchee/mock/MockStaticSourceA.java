@@ -42,7 +42,7 @@ public class MockStaticSourceA {
         mockUser.write()
                 .format("org.apache.hudi")
                 .option(KeyGeneratorOptions.RECORDKEY_FIELD_NAME.key(), "userId")
-                .option(KeyGeneratorOptions.PARTITIONPATH_FIELD_NAME.key(), "updatedAt")
+//                .option(KeyGeneratorOptions.PARTITIONPATH_FIELD_NAME.key(), "updatedAt")
                 .option(HoodieWriteConfig.PRECOMBINE_FIELD_NAME.key(), "updatedAt")
                 .option(HoodieWriteConfig.TBL_NAME.key(), TABLE_NAME)
                 .mode(SaveMode.Append)
