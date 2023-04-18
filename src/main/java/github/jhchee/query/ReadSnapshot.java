@@ -1,4 +1,4 @@
-package github.jhchee;
+package github.jhchee.query;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;

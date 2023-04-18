@@ -21,16 +21,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.hudi</groupId>
-            <artifactId>hudi-hive-sync</artifactId>
-            <version>${hudi.version}</version>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.apache.hudi</groupId>-->
-<!--            <artifactId>hudi-hadoop-mr-bundle</artifactId>-->
-<!--            <version>${hudi.version}</version>-->
-<!--        </dependency>-->
-        <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_${scala.comp.version}</artifactId>
             <version>${spark.version}</version>
@@ -41,23 +31,20 @@
             <version>${spark.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.mongodb.spark</groupId>
-            <artifactId>mongo-spark-connector_${scala.comp.version}</artifactId>
-            <version>10.1.1</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-streaming_${scala.comp.version}</artifactId>
             <version>${spark.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.mongodb</groupId>
-            <artifactId>bson</artifactId>
-            <version>4.8.2</version>
-        </dependency>
+        <!--  Most important Spark Hudi bundle  -->
         <dependency>
             <groupId>org.apache.hudi</groupId>
             <artifactId>hudi-spark${spark.comp.version}-bundle_${scala.comp.version}</artifactId>
+            <version>${hudi.version}</version>
+        </dependency>
+        <!--  For Hudi to sync hive based catalog e.g. Glue data catalog   -->
+        <dependency>
+            <groupId>org.apache.hudi</groupId>
+            <artifactId>hudi-hive-sync</artifactId>
             <version>${hudi.version}</version>
         </dependency>
         <dependency>
@@ -97,7 +84,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>github.jhchee.CreateTableAgg</mainClass>
+                                    <mainClass>github.jhchee.CreateTable</mainClass>
                                 </transformer>
                             </transformers>
                             <shadedArtifactAttached>true</shadedArtifactAttached>

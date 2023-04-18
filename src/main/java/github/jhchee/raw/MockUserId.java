@@ -1,4 +1,4 @@
-package github.jhchee.mock;
+package github.jhchee.raw;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;

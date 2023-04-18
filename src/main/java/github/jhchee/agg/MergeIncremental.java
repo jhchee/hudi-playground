@@ -1,4 +1,4 @@
-package github.jhchee.job.incremental;
+package github.jhchee.agg;
 
 import org.apache.hudi.DataSourceReadOptions;
 import org.apache.spark.sql.Dataset;
@@ -9,14 +9,19 @@ import org.apache.spark.sql.streaming.StreamingQuery;
 import org.apache.spark.sql.streaming.StreamingQueryException;
 import org.apache.spark.sql.streaming.Trigger;
 
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-public class MergeSourceBIncremental {
+public class MergeIncremental {
     public static void main(String[] args) throws TimeoutException, StreamingQueryException {
         SparkSession spark = SparkSession.builder()
-                                         .appName("Merge Source B to Target [Streaming]")
+                                         .appName("Merge incrementally")
+                                         .config("hive.metastore.uris", "thrift://localhost:9083")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+                                         .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
+                                         .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
+                                         .config("spark.sql.legacy.parquet.nanosAsLong", "true")
+                                         .config("spark.sql.warehouse.dir", "s3a://spark/")
+                                         .enableHiveSupport()
                                          .getOrCreate();
 
         Dataset<Row> streamingDataset = spark.readStream()
@@ -26,7 +31,7 @@ public class MergeSourceBIncremental {
                                              .load("/tmp/hudi/raw/source_b");
 
         DataStreamWriter<Row> dataStreamWriter = streamingDataset.writeStream()
-                                                                 .trigger(Trigger.ProcessingTime(1, TimeUnit.SECONDS))
+                                                                 .trigger(Trigger.Once())
                                                                  .format("console")
                                                                  .option("checkpointLocation", "/tmp/checkpointDir")
                                                                  .outputMode("append");

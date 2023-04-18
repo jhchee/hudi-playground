@@ -2,10 +2,10 @@ package github.jhchee;
 
 import org.apache.spark.sql.SparkSession;
 
-public class CreateTableAgg {
+public class CreateTable {
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
-                                         .appName("Hudi create table")
+                                         .appName("Create Hudi Tables.")
                                          .config("spark.sql.warehouse.dir", "s3a://spark/")
                                          .config("hive.metastore.uris", "thrift://localhost:9083")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
@@ -22,6 +22,7 @@ public class CreateTableAgg {
         spark.sql("CREATE TABLE target (\n" +
                 "  userId STRING,\n" +
                 "  name STRING,\n" +
+                "  favoriteEsports STRING,\n" +
                 "  updatedAt TIMESTAMP\n" +
                 ")\n" +
                 "USING hudi\n" +

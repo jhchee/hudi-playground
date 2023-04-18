@@ -1,4 +1,4 @@
-package github.jhchee.mock;
+package github.jhchee.raw;
 
 import com.github.javafaker.Faker;
 import org.apache.hudi.DataSourceWriteOptions;
@@ -12,12 +12,12 @@ import org.apache.spark.sql.types.DataTypes;
 
 import static org.apache.spark.sql.functions.*;
 
-public class MockStaticSourceA {
+public class MockSourceA {
     private static final Faker faker = new Faker();
 
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
-                                         .appName("generate-source-a")
+                                         .appName("Mock data for source A.")
                                          //
                                          .config("spark.sql.warehouse.dir", "s3a://spark/")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
@@ -51,7 +51,7 @@ public class MockStaticSourceA {
                 // hive sync option
                 .option(DataSourceWriteOptions.HIVE_SYNC_ENABLED_OPT_KEY(), "true")
                 .option("hoodie.datasource.hive_sync.table", "source_a")
-                .option("hoodie.metadata.enable", "false")
+                .option("hoodie.metadata.enable", "false") // minio docker issue
                 .option(DataSourceWriteOptions.HIVE_USE_JDBC().key(), "false")
                 .option(DataSourceWriteOptions.METASTORE_URIS().key(), "thrift://localhost:9083")
                 .option(DataSourceWriteOptions.HIVE_SYNC_MODE().key(), "hms")
