@@ -8,7 +8,6 @@ public class MergeSourceBSnapshot {
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
                                          .appName("Merge Source B to Target [Snapshot]")
-                                         .master("local[1]")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
                                          .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")

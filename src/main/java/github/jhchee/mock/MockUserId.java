@@ -11,19 +11,18 @@ import java.util.stream.IntStream;
 public class MockUserId {
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
-                                         .appName("generate-uuid")
-                                         .master("local[*]")
+                                         .appName("generate uuid")
+                                         .config("hive.metastore.uris", "thrift://localhost:9083")
+                                         .config("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
+                                         .enableHiveSupport()
                                          .getOrCreate();
 
         Dataset<String> userIds = spark.createDataset(IntStream.range(0, 1000000)
                                                                .mapToObj(i -> UUID.randomUUID().toString())
                                                                .collect(Collectors.toList()), Encoders.STRING());
         userIds.withColumnRenamed("value", "userId")
-               .repartition(1)
                .write()
                .option("header", "true")
-               .csv("./user_ids");
-
-
+               .csv("s3a://spark/user_ids/");
     }
 }

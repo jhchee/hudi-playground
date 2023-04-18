@@ -1,6 +1,7 @@
 package github.jhchee.mock;
 
 import com.github.javafaker.Faker;
+import org.apache.hudi.DataSourceWriteOptions;
 import org.apache.hudi.config.HoodieWriteConfig;
 import org.apache.hudi.keygen.constant.KeyGeneratorOptions;
 import org.apache.spark.sql.Dataset;
@@ -20,7 +21,6 @@ public class MockStaticSourceB {
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
                                          .appName("generate-source-b")
-                                         .master("local[1]")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
                                          .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
@@ -35,7 +35,7 @@ public class MockStaticSourceB {
 
         Dataset<Row> mockUser = spark.read()
                                      .option("header", "true")
-                                     .csv("./user_ids/")
+                                     .csv("s3a://spark/user_ids/")
                                      .withColumn("name", call_udf("fullName"))
                                      .withColumn("age", call_udf("age"))
                                      .withColumn("streetName", call_udf("streetName"))
@@ -47,10 +47,12 @@ public class MockStaticSourceB {
         mockUser.write()
                 .format("hudi")
                 .option(KeyGeneratorOptions.RECORDKEY_FIELD_NAME.key(), "userId")
-                .option(HoodieWriteConfig.PRECOMBINE_FIELD_NAME.key(), "updatedAt")
-                .option(HoodieWriteConfig.TBL_NAME.key(), TABLE_NAME)
+                .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), "updatedAt")
+                .option(HoodieWriteConfig.TABLE_NAME, TABLE_NAME)
+                .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
+                .option(DataSourceWriteOptions.HIVE_SYNC_ENABLED_OPT_KEY(), "true")
                 .mode(SaveMode.Append)
-                .save(TABLE_PATH);
+                .save("s3a://spark/source_b/");
     }
 
     public static UDF0<String> fullName = () -> faker.name().fullName();

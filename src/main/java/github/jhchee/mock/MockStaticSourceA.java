@@ -20,7 +20,6 @@ public class MockStaticSourceA {
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
                                          .appName("generate-source-a")
-                                         .master("local[1]")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
                                          .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
@@ -34,7 +33,7 @@ public class MockStaticSourceA {
 
         Dataset<Row> mockUser = spark.read()
                                      .option("header", "true")
-                                     .csv("./user_ids/")
+                                     .csv("s3a://spark/user_ids/")
                                      .withColumn("favoriteEsports", call_udf("favoriteEsports"))
                                      .withColumn("favoriteArtist", call_udf("favoriteArtist"))
                                      .withColumn("favoriteColor", call_udf("favoriteColor"))
@@ -46,8 +45,10 @@ public class MockStaticSourceA {
                 .option(DataSourceWriteOptions.RECORDKEY_FIELD_OPT_KEY(), "userId")
                 .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), "updatedAt")
                 .option(HoodieWriteConfig.TABLE_NAME, TABLE_NAME)
+                .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
+                .option(DataSourceWriteOptions.HIVE_SYNC_ENABLED_OPT_KEY(), "true")
                 .mode(SaveMode.Append)
-                .save(TABLE_PATH);
+                .save("s3a://spark/source_a/");
     }
 
     // faker

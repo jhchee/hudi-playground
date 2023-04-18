@@ -16,7 +16,6 @@ public class MergeSourceBIncremental {
     public static void main(String[] args) throws TimeoutException, StreamingQueryException {
         SparkSession spark = SparkSession.builder()
                                          .appName("Merge Source B to Target [Streaming]")
-                                         .master("local[1]")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                                          .getOrCreate();
 
