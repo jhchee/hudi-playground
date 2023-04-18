@@ -14,15 +14,15 @@ import static org.apache.spark.sql.functions.*;
 
 public class MockStaticSourceA {
     private static final Faker faker = new Faker();
-    private static final String TABLE_NAME = "source_a";
-    private static final String TABLE_PATH = "/tmp/hudi/raw/" + TABLE_NAME;
 
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
                                          .appName("generate-source-a")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
+                                         .config("hive.metastore.uris", "thrift://localhost:9083")
                                          .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+                                         .config("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
                                          .getOrCreate();
 
         spark.udf().register("favoriteEsports", favoriteEsports, DataTypes.StringType);
@@ -44,9 +44,15 @@ public class MockStaticSourceA {
                 .format("hudi")
                 .option(DataSourceWriteOptions.RECORDKEY_FIELD_OPT_KEY(), "userId")
                 .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), "updatedAt")
-                .option(HoodieWriteConfig.TABLE_NAME, TABLE_NAME)
+                .option(HoodieWriteConfig.TABLE_NAME, "source_a")
                 .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
+                // hive sync option
                 .option(DataSourceWriteOptions.HIVE_SYNC_ENABLED_OPT_KEY(), "true")
+                .option("hoodie.datasource.hive_sync.table", "source_a")
+                .option("hoodie.metadata.enable", "false")
+                .option(DataSourceWriteOptions.HIVE_USE_JDBC().key(), "false")
+                .option(DataSourceWriteOptions.METASTORE_URIS().key(), "thrift://localhost:9083")
+                .option(DataSourceWriteOptions.HIVE_SYNC_MODE().key(), "hms")
                 .mode(SaveMode.Append)
                 .save("s3a://spark/source_a/");
     }

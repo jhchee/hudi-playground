@@ -4,18 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/conf/metastore-site.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/entrypoint.sh" afterDir="false" />
+    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="push">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTableAgg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTableAgg.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/ReadSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/ReadSnapshot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/job/backfill/MergeSourceBSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/job/backfill/MergeSourceBSnapshot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/job/incremental/MergeSourceBIncremental.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/job/incremental/MergeSourceBIncremental.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockStaticSourceA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockStaticSourceA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockStaticSourceB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockStaticSourceB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockUserId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockUserId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_ids/._SUCCESS.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_ids/.part-00000-a80aad70-5084-4e37-ba3f-977ed0f1e8dd-c000.csv.crc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_ids/_SUCCESS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user_ids/part-00000-a80aad70-5084-4e37-ba3f-977ed0f1e8dd-c000.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,8 +65,13 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3091095",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
+    "settings.editor.selected.configurable": "bigdataide_conn_settings",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -79,26 +86,13 @@
       <recent name="github.jhchee.mock" />
     </key>
   </component>
-  <component name="RunManager" selected="Spark Submit.MockUserId">
-    <configuration name="MergeSourceBIncremental" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="github.jhchee.job.incremental.MergeSourceBIncremental" />
+  <component name="RunManager" selected="Spark Submit.ReadSnapshot">
+    <configuration name="CreateTableAgg" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="github.jhchee.CreateTableAgg" />
       <module name="hudi-playground" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="github.jhchee.job.incremental.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MergeSourceBSnapshot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="github.jhchee.job.backfill.MergeSourceBSnapshot" />
-      <module name="hudi-playground" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="github.jhchee.job.backfill.*" />
+          <option name="PATTERN" value="github.jhchee.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -119,6 +113,331 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="ReadSnapshot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="github.jhchee.ReadSnapshot" />
+      <module name="hudi-playground" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="github.jhchee.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateTableAgg" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="archives">
+        <list />
+      </option>
+      <option name="artifactArgs" value="" />
+      <option name="artifactPath">
+        <FilePath>
+          <option name="path" value="$PROJECT_DIR$/target/hudi-playground-1.0-SNAPSHOT-SHADED.jar" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="beforeShellScript" value="" />
+      <option name="className" value="github.jhchee.CreateTableAgg" />
+      <option name="clusterManager" value="LOCAL" />
+      <option name="conf" value="" />
+      <option name="deployMode" value="CLIENT" />
+      <option name="driverClassPath">
+        <list />
+      </option>
+      <option name="driverCores" value="" />
+      <option name="driverJavaOptions" value="" />
+      <option name="driverLibraryPath">
+        <list />
+      </option>
+      <option name="driverMemory" value="" />
+      <option name="envParams" value="" />
+      <option name="excludePackages" value="" />
+      <option name="executorCores" value="" />
+      <option name="executorMemory" value="" />
+      <option name="files">
+        <list />
+      </option>
+      <option name="interactive" value="false" />
+      <option name="jars">
+        <list />
+      </option>
+      <option name="keytab">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="master" value="local" />
+      <option name="numExecutors" value="" />
+      <option name="packages" value="org.apache.hudi:hudi-spark3.3-bundle_2.12:0.12.2" />
+      <option name="principal" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="propertiesFile">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="proxyUser" value="" />
+      <option name="pyFiles">
+        <list />
+      </option>
+      <option name="pythonSdkPath" value="" />
+      <option name="queue" value="" />
+      <option name="repositories" value="" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="shellExecutor" value="/bin/zsh" />
+      <option name="sparkHome" value="$USER_HOME$/spark-3.3.2-bin-hadoop3" />
+      <option name="sparkMonitoringDriverId" value="" />
+      <option name="supervise" value="false" />
+      <option name="totalExecutorCores" value="" />
+      <option name="verbose" value="false" />
+      <option name="workDirectoryPath">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="MergeSourceBSnapshot" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="archives">
+        <list />
+      </option>
+      <option name="artifactArgs" value="" />
+      <option name="artifactPath">
+        <FilePath>
+          <option name="path" value="$PROJECT_DIR$/target/hudi-playground-1.0-SNAPSHOT-SHADED.jar" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="beforeShellScript" value="" />
+      <option name="className" value="github.jhchee.job.backfill.MergeSourceBSnapshot" />
+      <option name="clusterManager" value="LOCAL" />
+      <option name="conf" value="" />
+      <option name="deployMode" value="CLIENT" />
+      <option name="driverClassPath">
+        <list />
+      </option>
+      <option name="driverCores" value="" />
+      <option name="driverJavaOptions" value="" />
+      <option name="driverLibraryPath">
+        <list />
+      </option>
+      <option name="driverMemory" value="" />
+      <option name="envParams" value="" />
+      <option name="excludePackages" value="" />
+      <option name="executorCores" value="" />
+      <option name="executorMemory" value="" />
+      <option name="files">
+        <list />
+      </option>
+      <option name="interactive" value="false" />
+      <option name="jars">
+        <list />
+      </option>
+      <option name="keytab">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="master" value="local" />
+      <option name="numExecutors" value="" />
+      <option name="packages" value="org.apache.hudi:hudi-spark3.3-bundle_2.12:0.12.2" />
+      <option name="principal" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="propertiesFile">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="proxyUser" value="" />
+      <option name="pyFiles">
+        <list />
+      </option>
+      <option name="pythonSdkPath" value="" />
+      <option name="queue" value="" />
+      <option name="repositories" value="" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="shellExecutor" value="/bin/zsh" />
+      <option name="sparkHome" value="$USER_HOME$/spark-3.3.2-bin-hadoop3" />
+      <option name="sparkMonitoringDriverId" value="" />
+      <option name="supervise" value="false" />
+      <option name="totalExecutorCores" value="" />
+      <option name="verbose" value="false" />
+      <option name="workDirectoryPath">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="MockStaticSourceA" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="archives">
+        <list />
+      </option>
+      <option name="artifactArgs" value="" />
+      <option name="artifactPath">
+        <FilePath>
+          <option name="path" value="$PROJECT_DIR$/target/hudi-playground-1.0-SNAPSHOT-SHADED.jar" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="beforeShellScript" value="" />
+      <option name="className" value="github.jhchee.mock.MockStaticSourceA" />
+      <option name="clusterManager" value="LOCAL" />
+      <option name="conf" value="" />
+      <option name="deployMode" value="CLIENT" />
+      <option name="driverClassPath">
+        <list />
+      </option>
+      <option name="driverCores" value="" />
+      <option name="driverJavaOptions" value="" />
+      <option name="driverLibraryPath">
+        <list />
+      </option>
+      <option name="driverMemory" value="" />
+      <option name="envParams" value="" />
+      <option name="excludePackages" value="" />
+      <option name="executorCores" value="" />
+      <option name="executorMemory" value="" />
+      <option name="files">
+        <list />
+      </option>
+      <option name="interactive" value="false" />
+      <option name="jars">
+        <list />
+      </option>
+      <option name="keytab">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="master" value="local" />
+      <option name="numExecutors" value="" />
+      <option name="packages" value="org.apache.hudi:hudi-spark3.3-bundle_2.12:0.12.2" />
+      <option name="principal" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="propertiesFile">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="proxyUser" value="" />
+      <option name="pyFiles">
+        <list />
+      </option>
+      <option name="pythonSdkPath" value="" />
+      <option name="queue" value="" />
+      <option name="repositories" value="" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="shellExecutor" value="/bin/zsh" />
+      <option name="sparkHome" value="$USER_HOME$/spark-3.3.2-bin-hadoop3" />
+      <option name="sparkMonitoringDriverId" value="" />
+      <option name="supervise" value="false" />
+      <option name="totalExecutorCores" value="" />
+      <option name="verbose" value="false" />
+      <option name="workDirectoryPath">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="MockStaticSourceB" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="archives">
+        <list />
+      </option>
+      <option name="artifactArgs" value="" />
+      <option name="artifactPath">
+        <FilePath>
+          <option name="path" value="$PROJECT_DIR$/target/hudi-playground-1.0-SNAPSHOT-SHADED.jar" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="beforeShellScript" value="" />
+      <option name="className" value="github.jhchee.mock.MockStaticSourceB" />
+      <option name="clusterManager" value="LOCAL" />
+      <option name="conf" value="" />
+      <option name="deployMode" value="CLIENT" />
+      <option name="driverClassPath">
+        <list />
+      </option>
+      <option name="driverCores" value="" />
+      <option name="driverJavaOptions" value="" />
+      <option name="driverLibraryPath">
+        <list />
+      </option>
+      <option name="driverMemory" value="" />
+      <option name="envParams" value="" />
+      <option name="excludePackages" value="" />
+      <option name="executorCores" value="" />
+      <option name="executorMemory" value="" />
+      <option name="files">
+        <list />
+      </option>
+      <option name="interactive" value="false" />
+      <option name="jars">
+        <list />
+      </option>
+      <option name="keytab">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="master" value="local" />
+      <option name="numExecutors" value="" />
+      <option name="packages" value="org.apache.hudi:hudi-spark3.3-bundle_2.12:0.12.2" />
+      <option name="principal" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="propertiesFile">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="proxyUser" value="" />
+      <option name="pyFiles">
+        <list />
+      </option>
+      <option name="pythonSdkPath" value="" />
+      <option name="queue" value="" />
+      <option name="repositories" value="" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="shellExecutor" value="/bin/zsh" />
+      <option name="sparkHome" value="$USER_HOME$/spark-3.3.2-bin-hadoop3" />
+      <option name="sparkMonitoringDriverId" value="" />
+      <option name="supervise" value="false" />
+      <option name="totalExecutorCores" value="" />
+      <option name="verbose" value="false" />
+      <option name="workDirectoryPath">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <method v="2" />
     </configuration>
     <configuration name="MockUserId" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allowRunningInParallel" value="false" />
@@ -198,6 +517,84 @@
       </option>
       <method v="2" />
     </configuration>
+    <configuration name="ReadSnapshot" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="archives">
+        <list />
+      </option>
+      <option name="artifactArgs" value="" />
+      <option name="artifactPath">
+        <FilePath>
+          <option name="path" value="$PROJECT_DIR$/target/hudi-playground-1.0-SNAPSHOT-SHADED.jar" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="beforeShellScript" value="" />
+      <option name="className" value="github.jhchee.ReadSnapshot" />
+      <option name="clusterManager" value="LOCAL" />
+      <option name="conf" value="" />
+      <option name="deployMode" value="CLIENT" />
+      <option name="driverClassPath">
+        <list />
+      </option>
+      <option name="driverCores" value="" />
+      <option name="driverJavaOptions" value="" />
+      <option name="driverLibraryPath">
+        <list />
+      </option>
+      <option name="driverMemory" value="" />
+      <option name="envParams" value="" />
+      <option name="excludePackages" value="" />
+      <option name="executorCores" value="" />
+      <option name="executorMemory" value="" />
+      <option name="files">
+        <list />
+      </option>
+      <option name="interactive" value="false" />
+      <option name="jars">
+        <list />
+      </option>
+      <option name="keytab">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="master" value="local" />
+      <option name="numExecutors" value="" />
+      <option name="packages" value="org.apache.hudi:hudi-spark3.3-bundle_2.12:0.12.2" />
+      <option name="principal" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="propertiesFile">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="proxyUser" value="" />
+      <option name="pyFiles">
+        <list />
+      </option>
+      <option name="pythonSdkPath" value="" />
+      <option name="queue" value="" />
+      <option name="repositories" value="" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="shellExecutor" value="/bin/zsh" />
+      <option name="sparkHome" value="$USER_HOME$/spark-3.3.2-bin-hadoop3" />
+      <option name="sparkMonitoringDriverId" value="" />
+      <option name="supervise" value="false" />
+      <option name="totalExecutorCores" value="" />
+      <option name="verbose" value="false" />
+      <option name="workDirectoryPath">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml" />
       <method v="2" />
@@ -225,20 +622,25 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.MergeSourceBIncremental" />
-      <item itemvalue="Application.MergeSourceBSnapshot" />
+      <item itemvalue="Application.CreateTableAgg" />
+      <item itemvalue="Application.ReadSnapshot" />
       <item itemvalue="Application.MockStaticSourceA" />
       <item itemvalue="Docker.docker-compose.yml.hive-metastore: Compose Deployment" />
       <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       <item itemvalue="Spark Submit.MockUserId" />
+      <item itemvalue="Spark Submit.MockStaticSourceA" />
+      <item itemvalue="Spark Submit.MockStaticSourceB" />
+      <item itemvalue="Spark Submit.CreateTableAgg" />
+      <item itemvalue="Spark Submit.MergeSourceBSnapshot" />
+      <item itemvalue="Spark Submit.ReadSnapshot" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ReadSnapshot" />
+        <item itemvalue="Application.CreateTableAgg" />
         <item itemvalue="Docker.docker-compose.yml.hive-metastore: Compose Deployment" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Application.MockStaticSourceA" />
-        <item itemvalue="Application.MergeSourceBSnapshot" />
-        <item itemvalue="Application.MergeSourceBIncremental" />
       </list>
     </recent_temporary>
   </component>
@@ -250,8 +652,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680782923940</updated>
-      <workItem from="1681805781568" duration="1101000" />
+      <workItem from="1681805781568" duration="11656000" />
     </task>
+    <task id="LOCAL-00001" summary="push">
+      <created>1681806924816</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681806924816</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +675,10 @@
     <option featureType="dependencySupport" implementationName="java:javax.ws.rs:javax.ws.rs-api" />
     <option featureType="dependencySupport" implementationName="java:org.apache.spark:spark-core_2.13" />
     <option featureType="dependencySupport" implementationName="java:jakarta.ws.rs:jakarta.ws.rs-api" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="push" />
+    <option name="LAST_COMMIT_MESSAGE" value="push" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -298,11 +712,6 @@
           <url>jar://$MAVEN_REPOSITORY$/org/apache/hudi/hudi-utilities_2.12/0.13.0/hudi-utilities_2.12-0.13.0.jar!/org/apache/hudi/utilities/deltastreamer/HoodieMultiTableDeltaStreamer.class</url>
           <line>74</line>
           <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockStaticSourceA.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

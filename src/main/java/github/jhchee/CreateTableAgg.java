@@ -6,11 +6,16 @@ public class CreateTableAgg {
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
                                          .appName("Hudi create table")
-                                         .master("local[1]")
-//                                         .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
-//                                         .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
+                                         .config("hive.metastore.uris", "thrift://localhost:9083")
+                                         .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
+                                         .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
+                                         .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
+                                         .config("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
+                                         .config("spark.sql.legacy.parquet.nanosAsLong", "true")
+                                         .enableHiveSupport()
                                          .getOrCreate();
 
+        spark.sql("DROP TABLE IF EXISTS target");
         spark.sql("CREATE TABLE target (\n" +
                 "  userId STRING,\n" +
                 "  name STRING,\n" +
@@ -18,9 +23,16 @@ public class CreateTableAgg {
                 ")\n" +
                 "USING hudi\n" +
                 "OPTIONS (\n" +
-                "  'hoodie.datasource.write.recordkey.field' 'userId',\n" +
-                "  'hoodie.datasource.write.precombine.field' 'updatedOn'\n" +
+                "  type = 'cow',\n" +
+                "  primaryKey = 'userId',\n" +
+                "  preCombineField = 'updatedOn',\n" +
+                " hoodie.datasource.hive_sync.enable = 'true',\n" +
+                " hoodie.datasource.hive_sync.table = 'source_a',\n" +
+                " hoodie.metadata.enable = 'false',\n" +
+                " hoodie.datasource.hive_sync.use_jdbc = 'false',\n" +
+                " hoodie.datasource.hive_sync.metastore.uris = 'thrift://localhost:9083',\n" +
+                " hoodie.datasource.hive_sync.mode = 'hms'\n" +
                 ")\n" +
-                "LOCATION '/tmp/hudi/agg/target'");
+                "LOCATION 's3a://spark/target'");
     }
 }
