@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="push">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="use hudi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTableAgg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTableAgg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/ReadSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/ReadSnapshot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/job/backfill/MergeSourceBSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/job/backfill/MergeSourceBSnapshot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockStaticSourceA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockStaticSourceA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockStaticSourceB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockStaticSourceB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockUserId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockUserId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_ids/._SUCCESS.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_ids/.part-00000-a80aad70-5084-4e37-ba3f-977ed0f1e8dd-c000.csv.crc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_ids/_SUCCESS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_ids/part-00000-a80aad70-5084-4e37-ba3f-977ed0f1e8dd-c000.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +79,7 @@
       <recent name="github.jhchee.mock" />
     </key>
   </component>
-  <component name="RunManager" selected="Spark Submit.ReadSnapshot">
+  <component name="RunManager" selected="Spark Submit.MergeSourceBSnapshot">
     <configuration name="CreateTableAgg" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="github.jhchee.CreateTableAgg" />
       <module name="hudi-playground" />
@@ -652,7 +645,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680782923940</updated>
-      <workItem from="1681805781568" duration="11656000" />
+      <workItem from="1681805781568" duration="15050000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <created>1681806924816</created>
@@ -661,7 +654,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681806924816</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="can merge without sync">
+      <created>1681818808211</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681818808211</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -678,7 +678,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="push" />
-    <option name="LAST_COMMIT_MESSAGE" value="push" />
+    <MESSAGE value="can merge without sync" />
+    <option name="LAST_COMMIT_MESSAGE" value="can merge without sync" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

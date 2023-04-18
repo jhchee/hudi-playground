@@ -9,11 +9,13 @@ public class MergeSourceBSnapshot {
         SparkSession spark = SparkSession.builder()
                                          .appName("Merge Source B to Target [Snapshot]")
                                          .config("hive.metastore.uris", "thrift://localhost:9083")
+                                         .config("hive.metastore.warehouse.dir", "s3a://spark/")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
                                          .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
                                          .config("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
                                          .config("spark.sql.legacy.parquet.nanosAsLong", "true")
+                                         .config("spark.sql.warehouse.dir", "s3a://spark/")
                                          .enableHiveSupport()
                                          .getOrCreate();
 
@@ -24,12 +26,6 @@ public class MergeSourceBSnapshot {
              .option(DataSourceReadOptions.QUERY_TYPE_OPT_KEY(), DataSourceReadOptions.QUERY_TYPE_SNAPSHOT_OPT_VAL())
              .load("s3a://spark/source_b/")
              .createOrReplaceTempView("source");
-
-//        spark.read()
-//             .format("hudi")
-//             .option("hoodie.table.name", "target")
-//             .load("s3a://spark/target/")
-//             .createOrReplaceTempView("target");
 
 
         spark.sql("" +

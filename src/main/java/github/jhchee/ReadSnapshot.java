@@ -1,8 +1,5 @@
 package github.jhchee;
 
-import org.apache.hudi.DataSourceReadOptions;
-import org.apache.hudi.DataSourceWriteOptions;
-import org.apache.hudi.config.HoodieWriteConfig;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
@@ -10,7 +7,8 @@ import org.apache.spark.sql.SparkSession;
 public class ReadSnapshot {
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
-                                         .appName("generate-source-b")
+                                         .appName("Read snapshot")
+                                         .config("spark.sql.warehouse.dir", "s3a://spark/")
                                          .config("hive.metastore.uris", "thrift://localhost:9083")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
