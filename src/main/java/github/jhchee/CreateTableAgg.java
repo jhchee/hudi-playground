@@ -7,7 +7,6 @@ public class CreateTableAgg {
         SparkSession spark = SparkSession.builder()
                                          .appName("Hudi create table")
                                          .config("spark.sql.warehouse.dir", "s3a://spark/")
-                                         .config("hive.metastore.warehouse.dir", "s3a://spark/")
                                          .config("hive.metastore.uris", "thrift://localhost:9083")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")

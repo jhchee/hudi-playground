@@ -18,7 +18,6 @@ public class MockStaticSourceA {
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
                                          .appName("generate-source-a")
-                                         .config("hive.metastore.warehouse.dir", "s3a://spark/")
                                          .config("spark.sql.warehouse.dir", "s3a://spark/")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
                                          .config("hive.metastore.uris", "thrift://localhost:9083")
