@@ -11,7 +11,6 @@ public class CreateTableAgg {
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
                                          .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
-                                         .config("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
                                          .config("spark.sql.legacy.parquet.nanosAsLong", "true")
                                          .enableHiveSupport()
                                          .getOrCreate();
@@ -23,13 +22,13 @@ public class CreateTableAgg {
         spark.sql("CREATE TABLE target (\n" +
                 "  userId STRING,\n" +
                 "  name STRING,\n" +
-                "  updatedOn TIMESTAMP\n" +
+                "  updatedAt TIMESTAMP\n" +
                 ")\n" +
                 "USING hudi\n" +
                 "OPTIONS (\n" +
                 "  type = 'cow',\n" +
                 "  primaryKey = 'userId',\n" +
-                "  preCombineField = 'updatedOn',\n" +
+                "  preCombineField = 'updatedAt',\n" +
                 "  hoodie.datasource.hive_sync.enable = 'true',\n" +
                 "  hoodie.datasource.hive_sync.table = 'target',\n" +
                 "  hoodie.metadata.enable = 'false',\n" +

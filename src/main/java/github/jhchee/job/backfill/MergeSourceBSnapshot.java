@@ -12,7 +12,6 @@ public class MergeSourceBSnapshot {
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
                                          .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
-                                         .config("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
                                          .config("spark.sql.legacy.parquet.nanosAsLong", "true")
                                          .config("spark.sql.warehouse.dir", "s3a://spark/")
                                          .enableHiveSupport()
@@ -26,11 +25,10 @@ public class MergeSourceBSnapshot {
              .load("s3a://spark/source_b/")
              .createOrReplaceTempView("source");
 
-
         spark.sql("" +
                 "MERGE INTO target USING source ON target.userId = source.userId " +
-                "WHEN MATCHED THEN UPDATE SET target.name = source.name, target.updatedOn = source.updatedAt " +
-                "WHEN NOT MATCHED THEN INSERT (userId, name, updatedOn) VALUES (source.userId, source.name, source.updatedAt)" +
+                "WHEN MATCHED THEN UPDATE SET target.name = source.name, target.updatedAt = source.updatedAt " +
+                "WHEN NOT MATCHED THEN INSERT (userId, name, updatedAt) VALUES (source.userId, source.name, source.updatedAt)" +
                 "");
     }
 }

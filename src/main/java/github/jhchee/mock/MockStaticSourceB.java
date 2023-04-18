@@ -24,7 +24,6 @@ public class MockStaticSourceB {
                                          .config("hive.metastore.uris", "thrift://localhost:9083")
                                          .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
-                                         .config("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
                                          .getOrCreate();
 
         spark.udf().register("fullName", fullName, DataTypes.StringType);

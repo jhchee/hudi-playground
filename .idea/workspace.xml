@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="use hudi">
+    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="without hive.metastore.warehouse.dir">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTableAgg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTableAgg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/ReadSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/ReadSnapshot.java" afterDir="false" />
@@ -645,7 +645,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680782923940</updated>
-      <workItem from="1681805781568" duration="15050000" />
+      <workItem from="1681805781568" duration="16517000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <created>1681806924816</created>
@@ -661,7 +661,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681818808211</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="can merge now">
+      <created>1681825941862</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681825941862</updated>
+    </task>
+    <task id="LOCAL-00004" summary="without hive.metastore.warehouse.dir">
+      <created>1681826548992</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681826548992</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -679,7 +693,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="push" />
     <MESSAGE value="can merge without sync" />
-    <option name="LAST_COMMIT_MESSAGE" value="can merge without sync" />
+    <MESSAGE value="can merge now" />
+    <MESSAGE value="without hive.metastore.warehouse.dir" />
+    <option name="LAST_COMMIT_MESSAGE" value="without hive.metastore.warehouse.dir" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

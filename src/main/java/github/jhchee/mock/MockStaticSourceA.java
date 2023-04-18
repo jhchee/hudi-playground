@@ -18,12 +18,13 @@ public class MockStaticSourceA {
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
                                          .appName("generate-source-a")
+                                         //
                                          .config("spark.sql.warehouse.dir", "s3a://spark/")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
                                          .config("hive.metastore.uris", "thrift://localhost:9083")
+                                         // to access s3
                                          .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
-                                         .config("spark.hadoop.fs.s3a.aws.credentials.provider", "org.apache.hadoop.fs.s3a.SimpleAWSCredentialsProvider")
                                          .getOrCreate();
 
         spark.udf().register("favoriteEsports", favoriteEsports, DataTypes.StringType);
