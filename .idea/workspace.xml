@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="updatedOn -&gt; updatedAt">
+    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="could not update schema">
+      <change afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/DropTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeSnapshot2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeSnapshotComplex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/schema/TargetSchema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/util/WriteUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTableAgg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/ReadSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/query/ReadSnapshot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/job/backfill/MergeSourceBSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeSnapshot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/job/incremental/MergeSourceBIncremental.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeIncremental.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockStaticSourceA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockStaticSourceB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/mock/MockUserId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockUserId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,31 +45,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/vchee/Documents/Work/hudi-playground",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.3091095",
-    "settings.editor.selected.configurable": "bigdataide_conn_settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/vchee/Documents/Work/hudi-playground&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.3091095&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;bigdataide_conn_settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -78,11 +78,13 @@
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="github.jhchee" />
+      <recent name="github.jhchee.agg" />
       <recent name="github.jhchee.job.backfill" />
       <recent name="github.jhchee.mock" />
     </key>
   </component>
-  <component name="RunManager" selected="Spark Submit.MergeSnapshot">
+  <component name="RunManager" selected="Spark Submit.MergeSnapshotComplex">
     <configuration name="CreateTable" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="archives">
@@ -161,6 +163,84 @@
       </option>
       <method v="2" />
     </configuration>
+    <configuration name="DropTable" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="archives">
+        <list />
+      </option>
+      <option name="artifactArgs" value="" />
+      <option name="artifactPath">
+        <FilePath>
+          <option name="path" value="$PROJECT_DIR$/target/hudi-playground-1.0-SNAPSHOT-SHADED.jar" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="beforeShellScript" value="" />
+      <option name="className" value="github.jhchee.DropTable" />
+      <option name="clusterManager" value="LOCAL" />
+      <option name="conf" value="" />
+      <option name="deployMode" value="CLIENT" />
+      <option name="driverClassPath">
+        <list />
+      </option>
+      <option name="driverCores" value="" />
+      <option name="driverJavaOptions" value="" />
+      <option name="driverLibraryPath">
+        <list />
+      </option>
+      <option name="driverMemory" value="" />
+      <option name="envParams" value="" />
+      <option name="excludePackages" value="" />
+      <option name="executorCores" value="" />
+      <option name="executorMemory" value="" />
+      <option name="files">
+        <list />
+      </option>
+      <option name="interactive" value="false" />
+      <option name="jars">
+        <list />
+      </option>
+      <option name="keytab">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="master" value="local" />
+      <option name="numExecutors" value="" />
+      <option name="packages" value="org.apache.hudi:hudi-spark3.3-bundle_2.12:0.12.2" />
+      <option name="principal" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="propertiesFile">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="proxyUser" value="" />
+      <option name="pyFiles">
+        <list />
+      </option>
+      <option name="pythonSdkPath" value="" />
+      <option name="queue" value="" />
+      <option name="repositories" value="" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="shellExecutor" value="/bin/zsh" />
+      <option name="sparkHome" value="$USER_HOME$/spark-3.3.2-bin-hadoop3" />
+      <option name="sparkMonitoringDriverId" value="" />
+      <option name="supervise" value="false" />
+      <option name="totalExecutorCores" value="" />
+      <option name="verbose" value="false" />
+      <option name="workDirectoryPath">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <method v="2" />
+    </configuration>
     <configuration name="MergeSnapshot" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="archives">
@@ -175,6 +255,162 @@
       </option>
       <option name="beforeShellScript" value="" />
       <option name="className" value="github.jhchee.agg.MergeSnapshot" />
+      <option name="clusterManager" value="LOCAL" />
+      <option name="conf" value="" />
+      <option name="deployMode" value="CLIENT" />
+      <option name="driverClassPath">
+        <list />
+      </option>
+      <option name="driverCores" value="" />
+      <option name="driverJavaOptions" value="" />
+      <option name="driverLibraryPath">
+        <list />
+      </option>
+      <option name="driverMemory" value="" />
+      <option name="envParams" value="" />
+      <option name="excludePackages" value="" />
+      <option name="executorCores" value="" />
+      <option name="executorMemory" value="" />
+      <option name="files">
+        <list />
+      </option>
+      <option name="interactive" value="false" />
+      <option name="jars">
+        <list />
+      </option>
+      <option name="keytab">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="master" value="local" />
+      <option name="numExecutors" value="" />
+      <option name="packages" value="org.apache.hudi:hudi-spark3.3-bundle_2.12:0.12.2" />
+      <option name="principal" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="propertiesFile">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="proxyUser" value="" />
+      <option name="pyFiles">
+        <list />
+      </option>
+      <option name="pythonSdkPath" value="" />
+      <option name="queue" value="" />
+      <option name="repositories" value="" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="shellExecutor" value="/bin/zsh" />
+      <option name="sparkHome" value="$USER_HOME$/spark-3.3.2-bin-hadoop3" />
+      <option name="sparkMonitoringDriverId" value="" />
+      <option name="supervise" value="false" />
+      <option name="totalExecutorCores" value="" />
+      <option name="verbose" value="false" />
+      <option name="workDirectoryPath">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="MergeSnapshot2" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="archives">
+        <list />
+      </option>
+      <option name="artifactArgs" value="" />
+      <option name="artifactPath">
+        <FilePath>
+          <option name="path" value="$PROJECT_DIR$/target/hudi-playground-1.0-SNAPSHOT-SHADED.jar" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="beforeShellScript" value="" />
+      <option name="className" value="github.jhchee.agg.MergeSnapshot2" />
+      <option name="clusterManager" value="LOCAL" />
+      <option name="conf" value="" />
+      <option name="deployMode" value="CLIENT" />
+      <option name="driverClassPath">
+        <list />
+      </option>
+      <option name="driverCores" value="" />
+      <option name="driverJavaOptions" value="" />
+      <option name="driverLibraryPath">
+        <list />
+      </option>
+      <option name="driverMemory" value="" />
+      <option name="envParams" value="" />
+      <option name="excludePackages" value="" />
+      <option name="executorCores" value="" />
+      <option name="executorMemory" value="" />
+      <option name="files">
+        <list />
+      </option>
+      <option name="interactive" value="false" />
+      <option name="jars">
+        <list />
+      </option>
+      <option name="keytab">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="master" value="local" />
+      <option name="numExecutors" value="" />
+      <option name="packages" value="org.apache.hudi:hudi-spark3.3-bundle_2.12:0.12.2" />
+      <option name="principal" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="propertiesFile">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="proxyUser" value="" />
+      <option name="pyFiles">
+        <list />
+      </option>
+      <option name="pythonSdkPath" value="" />
+      <option name="queue" value="" />
+      <option name="repositories" value="" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="shellExecutor" value="/bin/zsh" />
+      <option name="sparkHome" value="$USER_HOME$/spark-3.3.2-bin-hadoop3" />
+      <option name="sparkMonitoringDriverId" value="" />
+      <option name="supervise" value="false" />
+      <option name="totalExecutorCores" value="" />
+      <option name="verbose" value="false" />
+      <option name="workDirectoryPath">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="MergeSnapshotComplex" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="archives">
+        <list />
+      </option>
+      <option name="artifactArgs" value="" />
+      <option name="artifactPath">
+        <FilePath>
+          <option name="path" value="$PROJECT_DIR$/target/hudi-playground-1.0-SNAPSHOT-SHADED.jar" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="beforeShellScript" value="" />
+      <option name="className" value="github.jhchee.agg.MergeSnapshotComplex" />
       <option name="clusterManager" value="LOCAL" />
       <option name="conf" value="" />
       <option name="deployMode" value="CLIENT" />
@@ -552,7 +788,9 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
@@ -584,7 +822,10 @@
       <item itemvalue="Spark Submit.MockSourceA" />
       <item itemvalue="Spark Submit.MockSourceB" />
       <item itemvalue="Spark Submit.CreateTable" />
+      <item itemvalue="Spark Submit.DropTable" />
       <item itemvalue="Spark Submit.MergeSnapshot" />
+      <item itemvalue="Spark Submit.MergeSnapshotComplex" />
+      <item itemvalue="Spark Submit.MergeSnapshot2" />
       <item itemvalue="Spark Submit.ReadSnapshot" />
     </list>
     <recent_temporary>
@@ -602,7 +843,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680782923940</updated>
-      <workItem from="1681805781568" duration="21148000" />
+      <workItem from="1681805781568" duration="45173000" />
+      <workItem from="1681991584416" duration="6208000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <created>1681806924816</created>
@@ -639,7 +881,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681827413277</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Merge from different sources">
+      <created>1681834054715</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681834054715</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -660,7 +909,9 @@
     <MESSAGE value="can merge now" />
     <MESSAGE value="without hive.metastore.warehouse.dir" />
     <MESSAGE value="updatedOn -&gt; updatedAt" />
-    <option name="LAST_COMMIT_MESSAGE" value="updatedOn -&gt; updatedAt" />
+    <MESSAGE value="Merge from different sources" />
+    <MESSAGE value="could not update schema" />
+    <option name="LAST_COMMIT_MESSAGE" value="could not update schema" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

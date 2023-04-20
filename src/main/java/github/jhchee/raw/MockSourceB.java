@@ -1,6 +1,7 @@
 package github.jhchee.raw;
 
 import com.github.javafaker.Faker;
+import github.jhchee.util.WriteUtils;
 import org.apache.hudi.DataSourceWriteOptions;
 import org.apache.hudi.config.HoodieWriteConfig;
 import org.apache.hudi.keygen.constant.KeyGeneratorOptions;
@@ -50,12 +51,7 @@ public class MockSourceB {
                 .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), "updatedAt")
                 .option(HoodieWriteConfig.TABLE_NAME, "source_b")
                 .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
-                .option(DataSourceWriteOptions.HIVE_SYNC_ENABLED_OPT_KEY(), "true")
-                .option("hoodie.datasource.hive_sync.table", "source_b")
-                .option("hoodie.metadata.enable", "false") // minio docker issue
-                .option(DataSourceWriteOptions.HIVE_USE_JDBC().key(), "false")
-                .option(DataSourceWriteOptions.METASTORE_URIS().key(), "thrift://localhost:9083")
-                .option(DataSourceWriteOptions.HIVE_SYNC_MODE().key(), "hms")
+                .options(WriteUtils.getHiveSyncOptions("default", "source_b"))
                 .mode(SaveMode.Append)
                 .save("s3a://spark/source_b/");
     }
