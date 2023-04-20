@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="fix schema initialization">
+    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeIncremental.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeIncremental.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeSnapshotComplex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeSnapshotComplex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/schema/TargetTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/schema/TargetTable.java" afterDir="false" />
     </list>
@@ -78,7 +79,7 @@
       <recent name="github.jhchee.mock" />
     </key>
   </component>
-  <component name="RunManager" selected="Spark Submit.MergeSnapshotComplex">
+  <component name="RunManager" selected="Spark Submit.MergeIncremental">
     <configuration name="CreateTable" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="archives">
@@ -171,6 +172,84 @@
       </option>
       <option name="beforeShellScript" value="" />
       <option name="className" value="github.jhchee.DropTable" />
+      <option name="clusterManager" value="LOCAL" />
+      <option name="conf" value="" />
+      <option name="deployMode" value="CLIENT" />
+      <option name="driverClassPath">
+        <list />
+      </option>
+      <option name="driverCores" value="" />
+      <option name="driverJavaOptions" value="" />
+      <option name="driverLibraryPath">
+        <list />
+      </option>
+      <option name="driverMemory" value="" />
+      <option name="envParams" value="" />
+      <option name="excludePackages" value="" />
+      <option name="executorCores" value="" />
+      <option name="executorMemory" value="" />
+      <option name="files">
+        <list />
+      </option>
+      <option name="interactive" value="false" />
+      <option name="jars">
+        <list />
+      </option>
+      <option name="keytab">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="master" value="local" />
+      <option name="numExecutors" value="" />
+      <option name="packages" value="org.apache.hudi:hudi-spark3.3-bundle_2.12:0.12.2" />
+      <option name="principal" value="" />
+      <option name="projectPathOnTarget" />
+      <option name="propertiesFile">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="proxyUser" value="" />
+      <option name="pyFiles">
+        <list />
+      </option>
+      <option name="pythonSdkPath" value="" />
+      <option name="queue" value="" />
+      <option name="repositories" value="" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <option name="shellExecutor" value="/bin/zsh" />
+      <option name="sparkHome" value="$USER_HOME$/spark-3.3.2-bin-hadoop3" />
+      <option name="sparkMonitoringDriverId" value="" />
+      <option name="supervise" value="false" />
+      <option name="totalExecutorCores" value="" />
+      <option name="verbose" value="false" />
+      <option name="workDirectoryPath">
+        <FilePath>
+          <option name="path" value="" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="MergeIncremental" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="archives">
+        <list />
+      </option>
+      <option name="artifactArgs" value="" />
+      <option name="artifactPath">
+        <FilePath>
+          <option name="path" value="$PROJECT_DIR$/target/hudi-playground-1.0-SNAPSHOT-SHADED.jar" />
+          <option name="type" value="FILE" />
+        </FilePath>
+      </option>
+      <option name="beforeShellScript" value="" />
+      <option name="className" value="github.jhchee.agg.MergeIncremental" />
       <option name="clusterManager" value="LOCAL" />
       <option name="conf" value="" />
       <option name="deployMode" value="CLIENT" />
@@ -819,6 +898,7 @@
       <item itemvalue="Spark Submit.DropTable" />
       <item itemvalue="Spark Submit.MergeSnapshot" />
       <item itemvalue="Spark Submit.MergeSnapshotComplex" />
+      <item itemvalue="Spark Submit.MergeIncremental" />
       <item itemvalue="Spark Submit.MergeSnapshot2" />
       <item itemvalue="Spark Submit.ReadSnapshot" />
     </list>
@@ -838,7 +918,8 @@
       <option name="presentableId" value="Default" />
       <updated>1680782923940</updated>
       <workItem from="1681805781568" duration="45173000" />
-      <workItem from="1681991584416" duration="11030000" />
+      <workItem from="1681991584416" duration="12062000" />
+      <workItem from="1682004887317" duration="2588000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <created>1681806924816</created>
@@ -896,7 +977,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682002044360</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="refactor">
+      <created>1682003681190</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1682003681190</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -920,7 +1008,8 @@
     <MESSAGE value="Merge from different sources" />
     <MESSAGE value="could not update schema" />
     <MESSAGE value="fix schema initialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix schema initialization" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

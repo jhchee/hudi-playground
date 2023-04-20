@@ -21,6 +21,7 @@ public class TargetTable {
     private static StructType persona() {
         StructType schema = new StructType();
         schema = schema.add(new StructField("favoriteEsports", DataTypes.StringType, true, Metadata.empty()));
+//        schema = schema.add(new StructField("favoriteArtist", DataTypes.StringType, true, Metadata.empty()));
         return schema;
     }
 }

@@ -32,7 +32,7 @@ public class MergeSnapshotComplex {
              .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), "updatedAt")
              .option(HoodieWriteConfig.TABLE_NAME, TargetTable.TABLE_NAME)
              .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
-             .options(WriteUtils.getHiveSyncOptions("default", "target_complex"))
+             .options(WriteUtils.getHiveSyncOptions("default", TargetTable.TABLE_NAME))
              .mode(SaveMode.Append)
              .save("s3a://spark/target_complex/");
 
@@ -43,7 +43,7 @@ public class MergeSnapshotComplex {
              .option(DataSourceReadOptions.QUERY_TYPE_OPT_KEY(), DataSourceReadOptions.QUERY_TYPE_SNAPSHOT_OPT_VAL())
              .load("s3a://spark/source_a/")
              .createOrReplaceTempView("source_a");
-//
+
         spark.sql("" +
                 "MERGE INTO target_complex as target USING source_a as source ON target.userId = source.userId " +
                 "WHEN MATCHED THEN UPDATE SET target.persona = struct(source.favoriteEsports), target.updatedAt = source.updatedAt " +
@@ -53,6 +53,7 @@ public class MergeSnapshotComplex {
         
         Dataset<Row> df = spark.sql("SELECT * FROM target_complex");
         df.show();
+
         System.out.println("Total count: " + df.count());
     }
 }
