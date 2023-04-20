@@ -25,12 +25,12 @@ public class MergeSnapshotComplex {
                                          .config("spark.sql.warehouse.dir", "s3a://spark/")
                                          .enableHiveSupport()
                                          .getOrCreate();
-        Dataset<Row> empty = spark.createDataFrame(Collections.emptyList(), TargetTable.root());
+        Dataset<Row> empty = spark.createDataFrame(Collections.emptyList(), TargetTable.SCHEMA);
         empty.write()
              .format("hudi")
              .option(DataSourceWriteOptions.RECORDKEY_FIELD_OPT_KEY(), "userId")
              .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), "updatedAt")
-             .option(HoodieWriteConfig.TABLE_NAME, "target_complex")
+             .option(HoodieWriteConfig.TABLE_NAME, TargetTable.TABLE_NAME)
              .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
              .options(WriteUtils.getHiveSyncOptions("default", "target_complex"))
              .mode(SaveMode.Append)
@@ -46,9 +46,13 @@ public class MergeSnapshotComplex {
 //
         spark.sql("" +
                 "MERGE INTO target_complex as target USING source_a as source ON target.userId = source.userId " +
-                "WHEN MATCHED THEN UPDATE SET target.nested = struct(source.favoriteEsports), target.updatedAt = source.updatedAt " +
-                "WHEN NOT MATCHED THEN INSERT (userId, nested, updatedAt) " +
+                "WHEN MATCHED THEN UPDATE SET target.persona = struct(source.favoriteEsports), target.updatedAt = source.updatedAt " +
+                "WHEN NOT MATCHED THEN INSERT (userId, persona, updatedAt) " +
                 "VALUES (source.userId, struct(source.favoriteEsports), source.updatedAt)" +
                 "");
+        
+        Dataset<Row> df = spark.sql("SELECT * FROM target_complex");
+        df.show();
+        System.out.println("Total count: " + df.count());
     }
 }

@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="could not update schema">
-      <change afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/DropTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeSnapshot2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeSnapshotComplex.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/schema/TargetSchema.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/util/WriteUtils.java" afterDir="false" />
+    <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="fix schema initialization">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/CreateTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceA.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeSnapshotComplex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeSnapshotComplex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/schema/TargetTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/schema/TargetTable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -844,7 +838,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680782923940</updated>
       <workItem from="1681805781568" duration="45173000" />
-      <workItem from="1681991584416" duration="6208000" />
+      <workItem from="1681991584416" duration="11030000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <created>1681806924816</created>
@@ -888,7 +882,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681834054715</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="could not update schema">
+      <created>1681998692112</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681998692112</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix schema initialization">
+      <created>1682002044360</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1682002044360</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -911,7 +919,8 @@
     <MESSAGE value="updatedOn -&gt; updatedAt" />
     <MESSAGE value="Merge from different sources" />
     <MESSAGE value="could not update schema" />
-    <option name="LAST_COMMIT_MESSAGE" value="could not update schema" />
+    <MESSAGE value="fix schema initialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix schema initialization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
