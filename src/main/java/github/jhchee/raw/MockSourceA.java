@@ -1,6 +1,7 @@
 package github.jhchee.raw;
 
 import com.github.javafaker.Faker;
+import github.jhchee.schema.SourceATable;
 import github.jhchee.util.WriteUtils;
 import org.apache.hudi.DataSourceWriteOptions;
 import org.apache.hudi.config.HoodieWriteConfig;
@@ -42,17 +43,15 @@ public class MockSourceA {
 
         mockUser.write()
                 .format("hudi")
-                .option(DataSourceWriteOptions.RECORDKEY_FIELD_OPT_KEY(), "userId")
-                .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), "updatedAt")
-                .option(HoodieWriteConfig.TABLE_NAME, "source_a")
+                .option(DataSourceWriteOptions.RECORDKEY_FIELD_OPT_KEY(), SourceATable.PK)
+                .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), SourceATable.COMBINE_KEY)
+                .option(HoodieWriteConfig.TABLE_NAME, SourceATable.TABLE_NAME)
                 .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
-                // hive sync option
-                .options(WriteUtils.getHiveSyncOptions("default", "source_a"))
+                .options(WriteUtils.getHiveSyncOptions("default", SourceATable.TABLE_NAME))
                 .mode(SaveMode.Append)
-                .save("s3a://spark/source_a/");
+                .save(SourceATable.PATH);
     }
 
-    // faker
     public static UDF0<String> favoriteEsports = () -> faker.esports().game();
     public static UDF0<String> favoriteArtist = () -> faker.artist().name();
     public static UDF0<String> favoriteColor = () -> faker.color().name();

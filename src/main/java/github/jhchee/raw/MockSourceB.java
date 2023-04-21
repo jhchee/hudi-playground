@@ -1,6 +1,7 @@
 package github.jhchee.raw;
 
 import com.github.javafaker.Faker;
+import github.jhchee.schema.SourceBTable;
 import github.jhchee.util.WriteUtils;
 import org.apache.hudi.DataSourceWriteOptions;
 import org.apache.hudi.config.HoodieWriteConfig;
@@ -47,13 +48,13 @@ public class MockSourceB {
 
         mockUser.write()
                 .format("hudi")
-                .option(KeyGeneratorOptions.RECORDKEY_FIELD_NAME.key(), "userId")
-                .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), "updatedAt")
-                .option(HoodieWriteConfig.TABLE_NAME, "source_b")
+                .option(KeyGeneratorOptions.RECORDKEY_FIELD_NAME.key(), SourceBTable.PK)
+                .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), SourceBTable.COMBINE_KEY)
+                .option(HoodieWriteConfig.TABLE_NAME, SourceBTable.TABLE_NAME)
                 .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
-                .options(WriteUtils.getHiveSyncOptions("default", "source_b"))
+                .options(WriteUtils.getHiveSyncOptions("default", SourceBTable.TABLE_NAME))
                 .mode(SaveMode.Append)
-                .save("s3a://spark/source_b/");
+                .save(SourceBTable.PATH);
     }
 
     public static UDF0<String> fullName = () -> faker.name().fullName();

@@ -1,5 +1,6 @@
 package github.jhchee.agg;
 
+import github.jhchee.schema.SourceATable;
 import github.jhchee.schema.TargetTable;
 import github.jhchee.util.WriteUtils;
 import org.apache.hudi.DataSourceReadOptions;
@@ -31,24 +32,23 @@ public class MergeIncremental {
                                          .enableHiveSupport()
                                          .getOrCreate();
 
-
         Dataset<Row> empty = spark.createDataFrame(Collections.emptyList(), TargetTable.SCHEMA);
         empty.write()
              .format("hudi")
-             .option(DataSourceWriteOptions.RECORDKEY_FIELD_OPT_KEY(), "userId")
-             .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), "updatedAt")
+             .option(DataSourceWriteOptions.RECORDKEY_FIELD_OPT_KEY(), TargetTable.PK)
+             .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), TargetTable.COMBINE_KEY)
              .option(HoodieWriteConfig.TABLE_NAME, TargetTable.TABLE_NAME)
              .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
              .options(WriteUtils.getHiveSyncOptions("default", TargetTable.TABLE_NAME))
              .mode(SaveMode.Append)
-             .save("s3a://spark/target/");
+             .save(TargetTable.PATH);
 
         // incremental read from a
         Dataset<Row> source = spark.readStream()
                                    .format("hudi")
-                                   .option("hoodie.table.name", "source_a")
+                                   .option("hoodie.table.name", SourceATable.TABLE_NAME)
                                    .option(DataSourceReadOptions.QUERY_TYPE_OPT_KEY(), DataSourceReadOptions.QUERY_TYPE_INCREMENTAL_OPT_VAL())
-                                   .load("s3a://spark/source_a/");
+                                   .load(SourceATable.PATH);
 
         DataStreamWriter<Row> dataStreamWriter = source.writeStream()
                                                        .format("hudi")
@@ -65,10 +65,10 @@ public class MergeIncremental {
         sourceDf.createOrReplaceTempView("source");
         sourceDf.sparkSession()
                 .sql("" +
-                        "MERGE INTO target as target USING source ON target.userId = source.userId " +
-                        "WHEN MATCHED THEN UPDATE SET target.persona = struct(source.favoriteEsports), target.updatedAt = source.updatedAt " +
-                        "WHEN NOT MATCHED THEN INSERT (userId, persona, updatedAt) " +
-                        "VALUES (source.userId, struct(source.favoriteEsports), source.updatedAt)" +
-                        "");
+                    "MERGE INTO target as target USING source ON target.userId = source.userId " +
+                    "WHEN MATCHED THEN UPDATE SET target.persona = struct(source.favoriteEsports), target.updatedAt = source.updatedAt " +
+                    "WHEN NOT MATCHED THEN INSERT (userId, persona, updatedAt) " +
+                    "VALUES (source.userId, struct(source.favoriteEsports), source.updatedAt)" +
+                    "");
     }
 }

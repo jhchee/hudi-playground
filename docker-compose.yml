@@ -15,8 +15,8 @@ services:
   minio:
     image: minio/minio
     environment:
-      - MINIO_ACCESS_KEY=accesskey
-      - MINIO_SECRET_KEY=secretkey
+      - MINIO_ROOT_USER=accesskey
+      - MINIO_ROOT_PASSWORD=secretkey
     volumes:
       - ./data1/minio:/data
     ports:
@@ -30,3 +30,15 @@ services:
       - "9083:9083"
     depends_on:
       - mariadb
+
+  createbuckets:
+    image: minio/mc
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc config host add myminio http://minio:9000 accesskey secretkey;
+      /usr/bin/mc mb myminio/spark;
+      /usr/bin/mc policy set public myminio/spark;
+      exit 0;
+      "
