@@ -34,7 +34,7 @@ public class MergeSnapshotComplex {
              .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
              .options(WriteUtils.getHiveSyncOptions("default", TargetTable.TABLE_NAME))
              .mode(SaveMode.Append)
-             .save("s3a://spark/target_complex/");
+             .save("s3a://spark/target/");
 
         // snapshot read from a
         spark.read()
@@ -45,13 +45,13 @@ public class MergeSnapshotComplex {
              .createOrReplaceTempView("source_a");
 
         spark.sql("" +
-                "MERGE INTO target_complex as target USING source_a as source ON target.userId = source.userId " +
+                "MERGE INTO target USING source_a as source ON target.userId = source.userId " +
                 "WHEN MATCHED THEN UPDATE SET target.persona = struct(source.favoriteEsports), target.updatedAt = source.updatedAt " +
                 "WHEN NOT MATCHED THEN INSERT (userId, persona, updatedAt) " +
                 "VALUES (source.userId, struct(source.favoriteEsports), source.updatedAt)" +
                 "");
         
-        Dataset<Row> df = spark.sql("SELECT * FROM target_complex");
+        Dataset<Row> df = spark.sql("SELECT * FROM target");
         df.show();
 
         System.out.println("Total count: " + df.count());

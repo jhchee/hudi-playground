@@ -41,7 +41,7 @@ public class MergeIncremental {
              .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
              .options(WriteUtils.getHiveSyncOptions("default", TargetTable.TABLE_NAME))
              .mode(SaveMode.Append)
-             .save("s3a://spark/target_complex/");
+             .save("s3a://spark/target/");
 
         // incremental read from a
         Dataset<Row> source = spark.readStream()
@@ -53,7 +53,7 @@ public class MergeIncremental {
         DataStreamWriter<Row> dataStreamWriter = source.writeStream()
                                                        .format("hudi")
                                                        .trigger(Trigger.AvailableNow())
-                                                       .foreachBatch((VoidFunction2<Dataset<Row>, Long>) (df, batchId) -> mergeIntoFromSourceA(df, batchId))
+                                                       .foreachBatch((VoidFunction2<Dataset<Row>, Long>) MergeIncremental::mergeIntoFromSourceA)
                                                        .option("checkpointLocation", "s3a://spark/checkpoint/mergeFromSourceA");
 
         StreamingQuery query = dataStreamWriter.start();
@@ -65,7 +65,7 @@ public class MergeIncremental {
         sourceDf.createOrReplaceTempView("source");
         sourceDf.sparkSession()
                 .sql("" +
-                        "MERGE INTO target_complex as target USING source ON target.userId = source.userId " +
+                        "MERGE INTO target as target USING source ON target.userId = source.userId " +
                         "WHEN MATCHED THEN UPDATE SET target.persona = struct(source.favoriteEsports), target.updatedAt = source.updatedAt " +
                         "WHEN NOT MATCHED THEN INSERT (userId, persona, updatedAt) " +
                         "VALUES (source.userId, struct(source.favoriteEsports), source.updatedAt)" +

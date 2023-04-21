@@ -19,11 +19,9 @@ public class MockSourceA {
     public static void main(String[] args) {
         SparkSession spark = SparkSession.builder()
                                          .appName("Mock data for source A.")
-                                         //
                                          .config("spark.sql.warehouse.dir", "s3a://spark/")
                                          .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.hudi.catalog.HoodieCatalog")
                                          .config("hive.metastore.uris", "thrift://localhost:9083")
-                                         // to access s3
                                          .config("spark.sql.extensions", "org.apache.spark.sql.hudi.HoodieSparkSessionExtension")
                                          .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
                                          .getOrCreate();
@@ -32,7 +30,6 @@ public class MockSourceA {
         spark.udf().register("favoriteArtist", favoriteArtist, DataTypes.StringType);
         spark.udf().register("favoriteColor", favoriteColor, DataTypes.StringType);
         spark.udf().register("favoriteHarryPotterCharacter", favoriteHarryPotterCharacter, DataTypes.StringType);
-
 
         Dataset<Row> mockUser = spark.read()
                                      .option("header", "true")

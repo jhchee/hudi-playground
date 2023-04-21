@@ -6,7 +6,7 @@ import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 
 public class TargetTable {
-    public static String TABLE_NAME = "target_complex";
+    public static String TABLE_NAME = "target";
     public static StructType SCHEMA = root();
 
     private static StructType root() {

@@ -16,10 +16,8 @@ public class DropTable {
                                          .enableHiveSupport()
                                          .getOrCreate();
 
-        spark.sql("DROP TABLE IF EXISTS default.default");
         spark.sql("DROP TABLE IF EXISTS source_a");
         spark.sql("DROP TABLE IF EXISTS source_b");
         spark.sql("DROP TABLE IF EXISTS target");
-        spark.sql("DROP TABLE IF EXISTS target_complex");
     }
 }
