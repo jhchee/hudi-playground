@@ -16,14 +16,19 @@ public class TargetTable {
         StructType schema = new StructType();
         schema = schema.add(new StructField("userId", DataTypes.StringType, false, Metadata.empty()));
         schema = schema.add(new StructField("updatedAt", DataTypes.LongType, false, Metadata.empty()));
+        schema = schema.add("info", info(), true);
         schema = schema.add("persona", persona(), true);
         return schema;
     }
 
+    private static StructType info() {
+        StructType schema = new StructType();
+        schema = schema.add(new StructField("name", DataTypes.StringType, true, Metadata.empty()));
+        return schema;
+    }
     private static StructType persona() {
         StructType schema = new StructType();
         schema = schema.add(new StructField("favoriteEsports", DataTypes.StringType, true, Metadata.empty()));
-//        schema = schema.add(new StructField("favoriteArtist", DataTypes.StringType, true, Metadata.empty()));
         return schema;
     }
 }

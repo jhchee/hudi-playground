@@ -2,7 +2,7 @@ package github.jhchee.agg;
 
 import github.jhchee.schema.SourceATable;
 import github.jhchee.schema.TargetTable;
-import github.jhchee.util.WriteUtils;
+import github.jhchee.conf.WriteConf;
 import org.apache.hudi.DataSourceReadOptions;
 import org.apache.hudi.DataSourceWriteOptions;
 import org.apache.hudi.config.HoodieWriteConfig;
@@ -39,14 +39,14 @@ public class MergeIncremental {
              .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), TargetTable.COMBINE_KEY)
              .option(HoodieWriteConfig.TABLE_NAME, TargetTable.TABLE_NAME)
              .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
-             .options(WriteUtils.getHiveSyncOptions("default", TargetTable.TABLE_NAME))
+             .options(WriteConf.getHiveSyncOptions("default", TargetTable.TABLE_NAME))
              .mode(SaveMode.Append)
              .save(TargetTable.PATH);
 
         String query = "MERGE INTO target as target USING source ON target.userId = source.userId " +
                 "WHEN MATCHED THEN UPDATE SET target.persona = struct(source.favoriteEsports), target.updatedAt = source.updatedAt " +
-                "WHEN NOT MATCHED THEN INSERT (userId, persona, updatedAt) " +
-                "VALUES (source.userId, struct(source.favoriteEsports), source.updatedAt)";
+                "WHEN NOT MATCHED THEN INSERT (userId, info, persona, updatedAt) " +
+                "VALUES (source.userId, NULL, struct(source.favoriteEsports), source.updatedAt)";
         incrementalMerge(spark, SourceATable.PATH, SourceATable.TABLE_NAME, TargetTable.TABLE_NAME, query);
     }
 

@@ -18,5 +18,6 @@ public class ReadSnapshot {
                                          .getOrCreate();
         Dataset<Row> df = spark.sql("SELECT * FROM source_a");
         df.show();
+        System.out.println(df.count());
     }
 }

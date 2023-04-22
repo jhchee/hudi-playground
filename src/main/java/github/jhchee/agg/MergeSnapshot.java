@@ -1,7 +1,7 @@
 package github.jhchee.agg;
 
 import github.jhchee.schema.SourceATable;
-import github.jhchee.util.WriteUtils;
+import github.jhchee.conf.WriteConf;
 import github.jhchee.schema.TargetTable;
 import org.apache.hudi.DataSourceReadOptions;
 import org.apache.hudi.DataSourceWriteOptions;
@@ -30,14 +30,14 @@ public class MergeSnapshot {
         empty.write()
              .format("hudi")
              .option(DataSourceWriteOptions.RECORDKEY_FIELD_OPT_KEY(), TargetTable.PK)
-             .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), TargetTable.TABLE_NAME)
+             .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), TargetTable.COMBINE_KEY)
              .option(HoodieWriteConfig.TABLE_NAME, TargetTable.TABLE_NAME)
              .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
              .option("hoodie.index.type", "BUCKET")
              .option("hoodie.bucket.index.hash.field", "userId")
              .option("hoodie.bucket.index.num.buckets", "10")
              .option("hoodie.datasource.hive_sync.bucket_sync", "true")
-             .options(WriteUtils.getHiveSyncOptions("default", TargetTable.TABLE_NAME))
+             .options(WriteConf.getHiveSyncOptions("default", TargetTable.TABLE_NAME))
              .mode(SaveMode.Append)
              .save(TargetTable.PATH);
 
@@ -52,8 +52,8 @@ public class MergeSnapshot {
         spark.sql("" +
                 "MERGE INTO target USING source_a as source ON target.userId = source.userId " +
                 "WHEN MATCHED THEN UPDATE SET target.persona = struct(source.favoriteEsports), target.updatedAt = source.updatedAt " +
-                "WHEN NOT MATCHED THEN INSERT (userId, persona, updatedAt) " +
-                "VALUES (source.userId, struct(source.favoriteEsports), source.updatedAt)" +
+                "WHEN NOT MATCHED THEN INSERT (userId, info, persona, updatedAt) " +
+                "VALUES (source.userId, NULL, struct(source.favoriteEsports), source.updatedAt)" +
                 "");
         
         Dataset<Row> df = spark.sql("SELECT * FROM target");

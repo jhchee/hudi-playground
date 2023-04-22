@@ -17,7 +17,7 @@ public class MockUserId {
                                          .enableHiveSupport()
                                          .getOrCreate();
 
-        Dataset<String> userIds = spark.createDataset(IntStream.range(0, 1_000)
+        Dataset<String> userIds = spark.createDataset(IntStream.range(0, 1_00)
                                                                .mapToObj(i -> UUID.randomUUID().toString())
                                                                .collect(Collectors.toList()), Encoders.STRING());
         userIds.withColumnRenamed("value", "userId")

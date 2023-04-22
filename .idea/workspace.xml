@@ -7,6 +7,13 @@
     <list default="true" id="217124b9-55f5-4540-bd33-9613803d4b7b" name="Changes" comment="Refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeIncremental.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeIncremental.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/agg/MergeSnapshot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/query/ReadSnapshot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/query/ReadSnapshot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockSourceB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockUserId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/raw/MockUserId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/schema/TargetTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/schema/TargetTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/github/jhchee/util/WriteUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/github/jhchee/conf/WriteConf.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +85,7 @@
       <recent name="github.jhchee.mock" />
     </key>
   </component>
-  <component name="RunManager" selected="Spark Submit.MockSourceA">
+  <component name="RunManager" selected="Spark Submit.ReadSnapshot">
     <configuration name="CreateTable" type="SparkSubmitConfigurationType" factoryName="SparkJobConfigurationType" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="archives">
@@ -763,7 +770,8 @@
       <workItem from="1682004887317" duration="3146000" />
       <workItem from="1682009046982" duration="3310000" />
       <workItem from="1682052941236" duration="5566000" />
-      <workItem from="1682063326178" duration="7881000" />
+      <workItem from="1682063326178" duration="15305000" />
+      <workItem from="1682163759799" duration="746000" />
     </task>
     <task id="LOCAL-00001" summary="push">
       <created>1681806924816</created>
@@ -856,7 +864,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682134000131</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Refactor">
+      <created>1682135606460</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1682135606460</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

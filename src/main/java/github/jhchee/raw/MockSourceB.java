@@ -2,7 +2,7 @@ package github.jhchee.raw;
 
 import com.github.javafaker.Faker;
 import github.jhchee.schema.SourceBTable;
-import github.jhchee.util.WriteUtils;
+import github.jhchee.conf.WriteConf;
 import org.apache.hudi.DataSourceWriteOptions;
 import org.apache.hudi.config.HoodieWriteConfig;
 import org.apache.hudi.keygen.constant.KeyGeneratorOptions;
@@ -52,7 +52,7 @@ public class MockSourceB {
                 .option(DataSourceWriteOptions.PRECOMBINE_FIELD_OPT_KEY(), SourceBTable.COMBINE_KEY)
                 .option(HoodieWriteConfig.TABLE_NAME, SourceBTable.TABLE_NAME)
                 .option(DataSourceWriteOptions.TABLE_TYPE_OPT_KEY(), "COPY_ON_WRITE")
-                .options(WriteUtils.getHiveSyncOptions("default", SourceBTable.TABLE_NAME))
+                .options(WriteConf.getHiveSyncOptions("default", SourceBTable.TABLE_NAME))
                 .mode(SaveMode.Append)
                 .save(SourceBTable.PATH);
     }

@@ -1,11 +1,11 @@
-package github.jhchee.util;
+package github.jhchee.conf;
 
 import org.apache.hudi.DataSourceWriteOptions;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class WriteUtils {
+public class WriteConf {
 
     public static Map<String, String> getHiveSyncOptions(String database, String table) {
         Map<String, String> options = new HashMap<>();
