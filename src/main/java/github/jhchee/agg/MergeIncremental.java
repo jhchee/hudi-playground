@@ -43,32 +43,32 @@ public class MergeIncremental {
              .mode(SaveMode.Append)
              .save(TargetTable.PATH);
 
-        // incremental read from a
+        String query = "MERGE INTO target as target USING source ON target.userId = source.userId " +
+                "WHEN MATCHED THEN UPDATE SET target.persona = struct(source.favoriteEsports), target.updatedAt = source.updatedAt " +
+                "WHEN NOT MATCHED THEN INSERT (userId, persona, updatedAt) " +
+                "VALUES (source.userId, struct(source.favoriteEsports), source.updatedAt)";
+        incrementalMerge(spark, SourceATable.PATH, SourceATable.TABLE_NAME, TargetTable.TABLE_NAME, query);
+    }
+
+    public static void incrementalMerge(SparkSession spark, String sourcePath, String sourceTable, String targetTable, String mergeQuery) throws TimeoutException, StreamingQueryException {
         Dataset<Row> source = spark.readStream()
                                    .format("hudi")
-                                   .option("hoodie.table.name", SourceATable.TABLE_NAME)
+                                   .option("hoodie.table.name", sourceTable)
                                    .option(DataSourceReadOptions.QUERY_TYPE_OPT_KEY(), DataSourceReadOptions.QUERY_TYPE_INCREMENTAL_OPT_VAL())
-                                   .load(SourceATable.PATH);
-
+                                   .load(sourcePath);
+        String checkpointLocation = String.format("s3a://spark/checkpoint/merge%sInto%s", sourceTable, targetTable);
         DataStreamWriter<Row> dataStreamWriter = source.writeStream()
                                                        .format("hudi")
                                                        .trigger(Trigger.AvailableNow())
-                                                       .foreachBatch((VoidFunction2<Dataset<Row>, Long>) MergeIncremental::mergeIntoFromSourceA)
-                                                       .option("checkpointLocation", "s3a://spark/checkpoint/mergeFromSourceA");
-
+                                                       .foreachBatch((VoidFunction2<Dataset<Row>, Long>) (sourceDf, batchId) -> executeMergeQuery(sourceDf, batchId, mergeQuery))
+                                                       .option("checkpointLocation", checkpointLocation);
         StreamingQuery query = dataStreamWriter.start();
         query.awaitTermination();
     }
 
-    public static void mergeIntoFromSourceA(Dataset<Row> sourceDf, Long batchId) {
+    public static void executeMergeQuery(Dataset<Row> sourceDf, Long batchId, String mergeQuery) {
         System.out.println("Batch id: " + batchId);
         sourceDf.createOrReplaceTempView("source");
-        sourceDf.sparkSession()
-                .sql("" +
-                    "MERGE INTO target as target USING source ON target.userId = source.userId " +
-                    "WHEN MATCHED THEN UPDATE SET target.persona = struct(source.favoriteEsports), target.updatedAt = source.updatedAt " +
-                    "WHEN NOT MATCHED THEN INSERT (userId, persona, updatedAt) " +
-                    "VALUES (source.userId, struct(source.favoriteEsports), source.updatedAt)" +
-                    "");
+        sourceDf.sparkSession().sql(mergeQuery);
     }
 }
