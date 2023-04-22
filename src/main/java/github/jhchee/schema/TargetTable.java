@@ -6,9 +6,9 @@ import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
 
 public class TargetTable {
+    public static StructType SCHEMA = root();
     public static String TABLE_NAME = "target";
     public static String PATH = "s3a://spark/target/";
-    public static StructType SCHEMA = root();
     public static String PK = "userId";
     public static String COMBINE_KEY = "updatedAt";
 
@@ -16,7 +16,6 @@ public class TargetTable {
         StructType schema = new StructType();
         schema = schema.add(new StructField("userId", DataTypes.StringType, false, Metadata.empty()));
         schema = schema.add(new StructField("updatedAt", DataTypes.LongType, false, Metadata.empty()));
-        // nested column
         schema = schema.add("persona", persona(), true);
         return schema;
     }
